@@ -5,16 +5,16 @@
   
   <title>hexo搭建记录 | 刘木</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="hexo 搭建博客环境 kali2.0https://nodejs.org/en/ 从node.js下载tar.xz文件xz -d name 解压为tar文件tar -xvf name 解压tarcd node…/binln -s ～/xxx/xxx/node  /usr/local/bin/nodeln -s ~/xxx/xxx/npm   /usr/local/bin/nodenpm inst">
+  <meta name="description" content="环境linux: 4.6.0-kali1-686-pae |node : node-v7.7.1 |hexo : 3.2.2 |从node官网下载文件,得到 node-v7.7.1-linux-x86.tar.xzxz -d name 解压xztar -xvf name 解压tarcd ~/下载/node-v7.7.1-linux-x86/bin 切换到刚刚解压的文件,绝对路径按当前环境改变。ln">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hexo搭建记录">
 <meta property="og:url" content="http://yoursite.com/2017/03/06/hexo搭建记录/index.html">
 <meta property="og:site_name" content="刘木">
-<meta property="og:description" content="hexo 搭建博客环境 kali2.0https://nodejs.org/en/ 从node.js下载tar.xz文件xz -d name 解压为tar文件tar -xvf name 解压tarcd node…/binln -s ～/xxx/xxx/node  /usr/local/bin/nodeln -s ~/xxx/xxx/npm   /usr/local/bin/nodenpm inst">
-<meta property="og:updated_time" content="2017-03-06T09:27:04.713Z">
+<meta property="og:description" content="环境linux: 4.6.0-kali1-686-pae |node : node-v7.7.1 |hexo : 3.2.2 |从node官网下载文件,得到 node-v7.7.1-linux-x86.tar.xzxz -d name 解压xztar -xvf name 解压tarcd ~/下载/node-v7.7.1-linux-x86/bin 切换到刚刚解压的文件,绝对路径按当前环境改变。ln">
+<meta property="og:updated_time" content="2017-03-06T11:03:25.289Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo搭建记录">
-<meta name="twitter:description" content="hexo 搭建博客环境 kali2.0https://nodejs.org/en/ 从node.js下载tar.xz文件xz -d name 解压为tar文件tar -xvf name 解压tarcd node…/binln -s ～/xxx/xxx/node  /usr/local/bin/nodeln -s ~/xxx/xxx/npm   /usr/local/bin/nodenpm inst">
+<meta name="twitter:description" content="环境linux: 4.6.0-kali1-686-pae |node : node-v7.7.1 |hexo : 3.2.2 |从node官网下载文件,得到 node-v7.7.1-linux-x86.tar.xzxz -d name 解压xztar -xvf name 解压tarcd ~/下载/node-v7.7.1-linux-x86/bin 切换到刚刚解压的文件,绝对路径按当前环境改变。ln">
   
     <link rel="alternate" href="/atom.xml" title="刘木" type="application/atom+xml">
   
@@ -85,13 +85,22 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>hexo 搭建博客<br>环境 kali2.0<br><a href="https://nodejs.org/en/" target="_blank" rel="external">https://nodejs.org/en/</a> 从node.js下载tar.xz文件<br>xz -d name 解压为tar文件<br>tar -xvf name 解压tar<br>cd node…/bin<br>ln -s ～/xxx/xxx/node  /usr/local/bin/node<br>ln -s ~/xxx/xxx/npm   /usr/local/bin/node<br>npm install -g hexo<br>mkdir blog;cd blog<br>hexo init 如果无hexo命令 回到设置全局域名的地方，应该有个hexo，将hexo添加到全局域名。<br>hexo generate<br>hexo server<br><a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a>   应该能成功，打开这个网址</p>
-<p>vim _config.yml  #最下面改为<br>deploy:<br>  type: git<br>    repository: <a href="https://github.com/ranyand/ranyand.github.io.git" target="_blank" rel="external">https://github.com/ranyand/ranyand.github.io.git</a><br>      branch: master<br>      npm install hexo-deployer-git –save<br>      hexo deploy<br>      此时输入 <a href="http://ranyand.github.io" target="_blank" rel="external">http://ranyand.github.io</a> 就有网站了。<br>      常用命令<br>      hexo new “postName” #新建文章<br>      hexo new page “pageName” #新建页面<br>      hexo generate #生成静态页面至public目录<br>      hexo server #开启预览访问端口（默认端口4000，’ctrl + c’关闭server）<br>      hexo deploy #将.deploy目录部署到GitHub<br>      hexo help  #查看帮助<br>      hexo version  #查看Hexo的版本</p>
+        <h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><h2 id="linux-4-6-0-kali1-686-pae"><a href="#linux-4-6-0-kali1-686-pae" class="headerlink" title="linux: 4.6.0-kali1-686-pae |"></a>linux: 4.6.0-kali1-686-pae |</h2><h2 id="node-node-v7-7-1"><a href="#node-node-v7-7-1" class="headerlink" title="node : node-v7.7.1 |"></a>node : node-v7.7.1 |</h2><h2 id="hexo-3-2-2"><a href="#hexo-3-2-2" class="headerlink" title="hexo : 3.2.2 |"></a>hexo : 3.2.2 |</h2><p>从<a href="https://nodejs.org/en/" target="_blank" rel="external">node官网</a>下载文件,得到 node-v7.7.1-linux-x86.tar.xz<br><code>xz -d name</code> 解压xz<br><code>tar -xvf name</code> 解压tar<br><code>cd ~/下载/node-v7.7.1-linux-x86/bin</code> 切换到刚刚解压的文件,绝对路径按当前环境改变。<br><code>ln -s  ~/下载/node-v7.7.1-linux-x86/bin/node  /usr/local/bin/node</code> 设置全局域名。<br><code>ln -s  ~/下载/node-v7.7.1-linux-x86/bin/npm   /usr/local/bin/npm</code>  设置全局域名。<br><code>npm install -g hexo</code> 安装hexo。<br><code>mkdir blog;cd blog</code>  创建新目录blog，并切换到blog目录下。<br><code>hexo init</code> 如果无hexo命令，回到设置全局域名的地方，应该有个hexo，将hexo添加到全局域名。<br><code>hexo generate</code> 生成静态网页<br><code>hexo server</code>   运行服务<br>浏览器输入 <a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a> 环境ok的话可以直接看到了，我没遇到问题。<br><code>vim _config.yml</code>  #最下面改为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">type: git</div><div class="line">repository: https://github.com/ranyand/ranyand.github.io.git</div><div class="line">branch: master</div></pre></td></tr></table></figure></p>
+<h2 id="注意，上面冒号后面有一个空格。"><a href="#注意，上面冒号后面有一个空格。" class="headerlink" title="注意，上面冒号后面有一个空格。"></a>注意，上面冒号后面有一个空格。</h2><p><code>npm install hexo-deployer-git --save</code> 这里应该是执行hexo和git的关联部署。<br><code>hexo deploy</code> 开始部署，需要github账户密码。</p>
+<h2 id="当当当当，完成了。输入地址https-ranyand-github-io-。博客出炉了。"><a href="#当当当当，完成了。输入地址https-ranyand-github-io-。博客出炉了。" class="headerlink" title="当当当当，完成了。输入地址https://ranyand.github.io/  。博客出炉了。"></a>当当当当，完成了。输入地址<a href="https://ranyand.github.io/" target="_blank" rel="external">https://ranyand.github.io/</a>  。博客出炉了。</h2><h1 id="日常更新"><a href="#日常更新" class="headerlink" title="日常更新"></a>日常更新</h1><p><code>hexo clean</code> 清楚缓存，网页正常可忽略<br><code>hexo g</code>  生成静态网页<br><code>hexo d</code>  开始部署</p>
+<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><pre><code>hexo new &quot;postName&quot; #新建文章
+hexo new page &quot;pageName&quot; #新建页面
+hexo generate #生成静态页面至public目录
+hexo server #开启预览访问端口（默认端口4000，&apos;ctrl + c&apos;关闭server）
+hexo deploy #将.deploy目录部署到GitHub
+hexo help  #查看帮助
+hexo version  #查看Hexo的版本
+</code></pre><h4 id="杂记"><a href="#杂记" class="headerlink" title="杂记"></a>杂记</h4><p>MAC环境下 首先要安装xcode。不然后面容易如各种错误- -我就没装，后面老出现各种错误，也有可能是其他原因吧。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/06/hexo搭建记录/" data-id="cizxwg6l60002o8fw2uwwx46a" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/06/hexo搭建记录/" data-id="cizy00nr500023nfw6sydz544" class="article-share-link">Share</a>
       
       
     </footer>
@@ -100,11 +109,15 @@
     
 <nav id="article-nav">
   
-  
-    <a href="/2017/03/06/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Hello World</div>
+    <a href="/2017/03/06/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Hello World
+        
+      </div>
     </a>
+  
   
 </nav>
 
@@ -140,11 +153,11 @@
       <ul>
         
           <li>
-            <a href="/2017/03/06/hexo搭建记录/">hexo搭建记录</a>
+            <a href="/2017/03/06/hello-world/">Hello World</a>
           </li>
         
           <li>
-            <a href="/2017/03/06/hello-world/">Hello World</a>
+            <a href="/2017/03/06/hexo搭建记录/">hexo搭建记录</a>
           </li>
         
       </ul>
