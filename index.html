@@ -61,6 +61,43 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-About-JPEG-EXIF" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/09/About-JPEG-EXIF/" class="article-date">
+  <time datetime="2017-03-09T08:03:29.000Z" itemprop="datePublished">2017-03-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/09/About-JPEG-EXIF/">About JPEG EXIF</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>uh,<br><code>git clone https://github.com/bennoleslie/pexif</code><br>“””<br>An example showing how to set the Image title on a jpeg file.<br>“””<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line">import pexif</div><div class="line"></div><div class="line"># Modify  the exif in a file</div><div class="line">img = pexif.JpegFile.fromFile(&quot;test/data/rose.jpg&quot;)</div><div class="line">img.exif.primary.ImageDescription =  &quot;Hello world!&quot;</div><div class="line">img.writeFile(&quot;hello1.jpg&quot;)</div><div class="line"></div><div class="line"># Add exif in a file</div><div class="line">img = pexif.JpegFile.fromFile(&quot;test/data/noexif.jpg&quot;)</div><div class="line">img.exif.primary.ImageDescription = &quot;Hello world!&quot;</div><div class="line">img.exif.primary.ExtendedEXIF.UserComment = &quot;a simple comment&quot;</div><div class="line">img.writeFile(&quot;hello2.jpg&quot;)</div><div class="line"></div><div class="line"># Copy some exif field from one to another</div><div class="line">primary_src = pexif.JpegFile.fromFile(&quot;test/data/rose.jpg&quot;).exif.primary</div><div class="line">img_dst = pexif.JpegFile.fromFile(&quot;test/data/noexif.jpg&quot;)</div><div class="line">primary_dst = img_dst.exif.primary</div><div class="line">primary_dst.Model = primary_src.Model</div><div class="line">primary_dst.Make = primary_src.Make</div><div class="line">img_dst.writeFile(&quot;hello3.jpg&quot;)</div><div class="line"></div><div class="line"># Copy entire exif from one to another (where there is no exif)</div><div class="line">img_src = pexif.JpegFile.fromFile(&quot;test/data/rose.jpg&quot;)</div><div class="line">img_dst = pexif.JpegFile.fromFile(&quot;test/data/noexif.jpg&quot;)</div><div class="line">img_dst.import_exif(img_src.exif)</div><div class="line">img_dst.writeFile(&quot;hello4.jpg&quot;)</div><div class="line"></div><div class="line"># Copy entire exif from one to another (where there is exif)</div><div class="line">img_src = pexif.JpegFile.fromFile(&quot;test/data/rose.jpg&quot;)</div><div class="line">img_dst = pexif.JpegFile.fromFile(&quot;test/data/conker.jpg&quot;)</div><div class="line">img_dst.import_exif(img_src.exif)</div><div class="line">img_dst.writeFile(&quot;hello5.jpg&quot;)</div><div class="line"></div><div class="line"># Remove metadata</div><div class="line">img_dst = pexif.JpegFile.fromFile(&quot;test/data/rose.jpg&quot;)</div><div class="line">img_dst.remove_metadata(paranoid=True)</div><div class="line">img_dst.writeFile(&quot;hello6.jpg&quot;)</div><div class="line"></div><div class="line"># Import metadata</div><div class="line">img_src = pexif.JpegFile.fromFile(&quot;test/data/conker.jpg&quot;)</div><div class="line">img_dst = pexif.JpegFile.fromFile(&quot;test/data/rose.jpg&quot;)</div><div class="line">img_dst.import_metadata(img_src)</div><div class="line">img_dst.writeFile(&quot;hello7.jpg&quot;)</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/09/About-JPEG-EXIF/" data-id="cj0247wwp0000c3fwuetdgfbf" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-markdown基本语法" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/03/06/markdown基本语法/" class="article-date">
@@ -102,7 +139,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/06/markdown基本语法/" data-id="cizy7o4p8000321fwy12jpoqt" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/06/markdown基本语法/" data-id="cj0247wwy0004c3fw31ichakr" class="article-share-link">Share</a>
       
       
     </footer>
@@ -150,7 +187,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/06/一些有趣的网站/" data-id="cizy7o4p9000421fwrkcczj6v" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/06/一些有趣的网站/" data-id="cj0247wx00005c3fw3w0bvdq9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -195,7 +232,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/06/hello-world/" data-id="cizy7o4oz000021fwpo8u2c9s" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/06/hello-world/" data-id="cj0247wwu0002c3fwlx7cw9gx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -243,7 +280,7 @@ hexo version  #查看Hexo的版本
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/06/hexo搭建记录/" data-id="cizy7o4p5000221fwhf0c6cq1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/06/hexo搭建记录/" data-id="cj0247wwx0003c3fwn6zat9yp" class="article-share-link">Share</a>
       
       
     </footer>
@@ -281,6 +318,10 @@ hexo version  #查看Hexo的版本
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2017/03/09/About-JPEG-EXIF/">About JPEG EXIF</a>
+          </li>
         
           <li>
             <a href="/2017/03/06/markdown基本语法/">markdown基本语法</a>
