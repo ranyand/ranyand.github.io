@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>pil | 刘木</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1.旋转并显示图片
+loads(加载),rotate(旋转),display(显示),external(外部)
+The following script loads an image, rotates it 45 degrees, and displays it using an external viewer (usually xv on Unix, and the paint program">
+<meta property="og:type" content="article">
+<meta property="og:title" content="pil">
+<meta property="og:url" content="http://yoursite.com/2017/03/12/pil/index.html">
+<meta property="og:site_name" content="刘木">
+<meta property="og:description" content="1.旋转并显示图片
+loads(加载),rotate(旋转),display(显示),external(外部)
+The following script loads an image, rotates it 45 degrees, and displays it using an external viewer (usually xv on Unix, and the paint program">
+<meta property="og:updated_time" content="2017-03-12T07:29:35.351Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="pil">
+<meta name="twitter:description" content="1.旋转并显示图片
+loads(加载),rotate(旋转),display(显示),external(外部)
+The following script loads an image, rotates it 45 degrees, and displays it using an external viewer (usually xv on Unix, and the paint program">
+  
+    <link rel="alternate" href="/atom.xml" title="刘木" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">刘木</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-pil" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/12/pil/" class="article-date">
+  <time datetime="2017-03-12T07:28:26.000Z" itemprop="datePublished">2017-03-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      pil
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1.旋转并显示图片</p>
+<p>loads(加载),rotate(旋转),display(显示),external(外部)</p>
+<p>The following script loads an image, rotates it 45 degrees, and displays it using an external viewer (usually xv on Unix, and the paint program on Windows).<br>以下脚本将加载一个图像，并将该图像旋转45度，并且用外部查看器显示他。（通常是Unix上的xv,和Windows上的绘图程序。）<br>Open,rotate,and display an image(using the default viewer)<br>打开，旋转，并显示图片（使用默认查看器）</p>
+<p>1<br>2<br>3</p>
+<pre><code>from PIL import Image
+im = Image.open(&quot;bride.jpg&quot;)
+im.rotate(45).show()
+
+2.创建缩略图
+
+thumbnails(缩略图)，current(当前)，directory(目录)，antialias(抗锯齿)
+
+The following script creates nice 128x128 thumbnails of all JPEG images in the current directory.
+以下脚本将为当前目录下所有的JPEG图像创建一个精致的 128*128缩略图。
+Create thumbnails
+创建缩略图
+
+```
+from PIL import Image
+import glob, os
+</code></pre><p>#图片尺寸有高宽<br>size = 128, 128</p>
+<p>#仅能找到后缀为.jpg，若为.jpeg .JPG .JPEG则无效。要自己改后缀名。<br>for infile in glob.glob(“*.jpg”):</p>
+<p>#分裂文件名，例源文件是hello.jpg,执行后就变成file=hello,ext=.jpg<br>file, ext = os.path.splitext(infile)<br>im = Image.open(infile)<br>im.thumbnail(size, Image.ANTIALIAS)</p>
+<p>#保存为hello.thumbnail，文件是JPEG图像。<br>im.save(file+”.thumbnail”,”JPEG”)<br>Functions<br>函数</p>
+<p>new open<br>new</p>
+<p>mode(模式)，single(单一的),omitted(省略),corresponds(对应), details(细节),initialised(初始化),filled(填充)<br>Image.new(mode, size) ⇒ image<br>Image.new(mode, size, color) ⇒ image</p>
+<p>Creates a new image with the given mode and size. Size is given as a (width, height)-tuple, in pixels. The color is given as a single value for single-band images, and a tuple for multi-band images (with one value for each band). In 1.1.4 and later, you can also use color names (see the ImageColor module documentation for details) If the color argument is omitted, the image is filled with zero (this usually corresponds to black). If the color is None, the image is not initialised. This can be useful if you’re going to paste or draw things in the image.<br>用所给的模式和尺寸创建一个新图像。size以（width， height）元组形式给出，单位是像素。该颜色作为单频带图像的单个值给出，并且对于多频带图像（每个频带具有一个值）给出一个元组。在1.1.4和更高版本中，你也可以使用颜色名称（详细请请参阅ImageColor 模块文档）。若颜色省略，则图像将填充零（通常是黑色）。如果颜色为无，则不初始化图像。如果你想在图像中粘贴或绘制内容，这将对你很有用。<br>from PIL import Image<br>im = Image.new(“RGB”, (512, 512), “white”) #单频带，由单个值给出。<br>im2 = Image.new(“RGB”, (512, 512), (255,255,255)) #多频带，以元组形式用多个值给出，(xxx,xxx,xxx)<br>open</p>
+<p>identifies(辨认),operation(操作),actual(实际),data(数据)，binary(二进制),methods(方法),representing(表示),implement(实现),seek(查找)<br>Image.open(file)<br>Image.open(file, mode)</p>
+<p>Opens and identifies the given image file. This is a lazy operation; the function reads the file header, but the actual image data is not read from the file until you try to process the data (call the load method to force loading). If the mode argument is given, it must be “r”.<br>打开并辨认所给的图像文件。这是一个懒操作，这个函数读取文件头部，但实际上图像数据并不是从文件中读取，直到你尝试处理数据（调用load方法来暴力加载）。如果给出了mode参数，它肯定是“r”。</p>
+<p>You can use either a string (representing the filename) or a file object as the file argument. In the latter case, the file object must implement read, seek, and tell methods, and be opened in binary mode.<br>你可以使用另一个字符串（表示文件名）或文件对象作为文件参数。在后一种情况下，文件对象必须实现read，seek和tell方法，并以二进制模式打开。<br>from PIL import Image<br>im = Image.open(“lenna.jpg”)</p>
+<p>from PIL import image<br>from StringIO import StringIO</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/12/pil/" data-id="cj06f4b4s0005vwfwyamk08wl" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/03/09/Python-笔记/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Python PIL库翻译</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/12/pil/">pil</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/09/Python-笔记/">Python PIL库翻译</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/09/About-JPEG-EXIF/">About JPEG EXIF</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/06/markdown基本语法/">markdown基本语法</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/06/一些有趣的网站/">一些有趣的网站</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 D<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

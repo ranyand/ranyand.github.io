@@ -3,14 +3,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>刘木</title>
+  <title>Python PIL库翻译 | 刘木</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="刘木">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="来源PIL官方文档环境Linux,Python2.7。注：灰色代码框内为部分单词释义。1.旋转并显示图片loads(加载),rotate(旋转),display(显示),external(外部)
+The following script loads an image, rotates it 45 degrees, and displays it using an external viewer (">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python PIL库翻译">
+<meta property="og:url" content="http://yoursite.com/2017/03/09/Python-笔记/index.html">
 <meta property="og:site_name" content="刘木">
+<meta property="og:description" content="来源PIL官方文档环境Linux,Python2.7。注：灰色代码框内为部分单词释义。1.旋转并显示图片loads(加载),rotate(旋转),display(显示),external(外部)
+The following script loads an image, rotates it 45 degrees, and displays it using an external viewer (">
+<meta property="og:updated_time" content="2017-03-09T12:19:15.722Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="刘木">
+<meta name="twitter:title" content="Python PIL库翻译">
+<meta name="twitter:description" content="来源PIL官方文档环境Linux,Python2.7。注：灰色代码框内为部分单词释义。1.旋转并显示图片loads(加载),rotate(旋转),display(显示),external(外部)
+The following script loads an image, rotates it 45 degrees, and displays it using an external viewer (">
   
     <link rel="alternate" href="/atom.xml" title="刘木" type="application/atom+xml">
   
@@ -59,76 +66,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-pil" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/03/12/pil/" class="article-date">
-  <time datetime="2017-03-12T07:28:26.000Z" itemprop="datePublished">2017-03-12</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/12/pil/">pil</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>1.旋转并显示图片</p>
-<p>loads(加载),rotate(旋转),display(显示),external(外部)</p>
-<p>The following script loads an image, rotates it 45 degrees, and displays it using an external viewer (usually xv on Unix, and the paint program on Windows).<br>以下脚本将加载一个图像，并将该图像旋转45度，并且用外部查看器显示他。（通常是Unix上的xv,和Windows上的绘图程序。）<br>Open,rotate,and display an image(using the default viewer)<br>打开，旋转，并显示图片（使用默认查看器）</p>
-<p>1<br>2<br>3</p>
-<pre><code>from PIL import Image
-im = Image.open(&quot;bride.jpg&quot;)
-im.rotate(45).show()
-
-2.创建缩略图
-
-thumbnails(缩略图)，current(当前)，directory(目录)，antialias(抗锯齿)
-
-The following script creates nice 128x128 thumbnails of all JPEG images in the current directory.
-以下脚本将为当前目录下所有的JPEG图像创建一个精致的 128*128缩略图。
-Create thumbnails
-创建缩略图
-
-```
-from PIL import Image
-import glob, os
-</code></pre><p>#图片尺寸有高宽<br>size = 128, 128</p>
-<p>#仅能找到后缀为.jpg，若为.jpeg .JPG .JPEG则无效。要自己改后缀名。<br>for infile in glob.glob(“*.jpg”):</p>
-<p>#分裂文件名，例源文件是hello.jpg,执行后就变成file=hello,ext=.jpg<br>file, ext = os.path.splitext(infile)<br>im = Image.open(infile)<br>im.thumbnail(size, Image.ANTIALIAS)</p>
-<p>#保存为hello.thumbnail，文件是JPEG图像。<br>im.save(file+”.thumbnail”,”JPEG”)<br>Functions<br>函数</p>
-<p>new open<br>new</p>
-<p>mode(模式)，single(单一的),omitted(省略),corresponds(对应), details(细节),initialised(初始化),filled(填充)<br>Image.new(mode, size) ⇒ image<br>Image.new(mode, size, color) ⇒ image</p>
-<p>Creates a new image with the given mode and size. Size is given as a (width, height)-tuple, in pixels. The color is given as a single value for single-band images, and a tuple for multi-band images (with one value for each band). In 1.1.4 and later, you can also use color names (see the ImageColor module documentation for details) If the color argument is omitted, the image is filled with zero (this usually corresponds to black). If the color is None, the image is not initialised. This can be useful if you’re going to paste or draw things in the image.<br>用所给的模式和尺寸创建一个新图像。size以（width， height）元组形式给出，单位是像素。该颜色作为单频带图像的单个值给出，并且对于多频带图像（每个频带具有一个值）给出一个元组。在1.1.4和更高版本中，你也可以使用颜色名称（详细请请参阅ImageColor 模块文档）。若颜色省略，则图像将填充零（通常是黑色）。如果颜色为无，则不初始化图像。如果你想在图像中粘贴或绘制内容，这将对你很有用。<br>from PIL import Image<br>im = Image.new(“RGB”, (512, 512), “white”) #单频带，由单个值给出。<br>im2 = Image.new(“RGB”, (512, 512), (255,255,255)) #多频带，以元组形式用多个值给出，(xxx,xxx,xxx)<br>open</p>
-<p>identifies(辨认),operation(操作),actual(实际),data(数据)，binary(二进制),methods(方法),representing(表示),implement(实现),seek(查找)<br>Image.open(file)<br>Image.open(file, mode)</p>
-<p>Opens and identifies the given image file. This is a lazy operation; the function reads the file header, but the actual image data is not read from the file until you try to process the data (call the load method to force loading). If the mode argument is given, it must be “r”.<br>打开并辨认所给的图像文件。这是一个懒操作，这个函数读取文件头部，但实际上图像数据并不是从文件中读取，直到你尝试处理数据（调用load方法来暴力加载）。如果给出了mode参数，它肯定是“r”。</p>
-<p>You can use either a string (representing the filename) or a file object as the file argument. In the latter case, the file object must implement read, seek, and tell methods, and be opened in binary mode.<br>你可以使用另一个字符串（表示文件名）或文件对象作为文件参数。在后一种情况下，文件对象必须实现read，seek和tell方法，并以二进制模式打开。<br>from PIL import Image<br>im = Image.open(“lenna.jpg”)</p>
-<p>from PIL import image<br>from StringIO import StringIO</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/12/pil/" data-id="cj06f4b4s0005vwfwyamk08wl" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Python-笔记" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-Python-笔记" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/03/09/Python-笔记/" class="article-date">
   <time datetime="2017-03-09T08:48:32.000Z" itemprop="datePublished">2017-03-09</time>
@@ -141,8 +79,8 @@ import glob, os
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/09/Python-笔记/">Python PIL库翻译</a>
+    <h1 class="article-title" itemprop="name">
+      Python PIL库翻译
     </h1>
   
 
@@ -659,239 +597,28 @@ When converting from a colour image to black and white, the library uses the ITU
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-About-JPEG-EXIF" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/03/09/About-JPEG-EXIF/" class="article-date">
-  <time datetime="2017-03-09T08:03:29.000Z" itemprop="datePublished">2017-03-09</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+    <a href="/2017/03/12/pil/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/09/About-JPEG-EXIF/">About JPEG EXIF</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>uh,<br><code>git clone https://github.com/bennoleslie/pexif</code><br>“””<br>An example showing how to set the Image title on a jpeg file.<br>“””<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line">import pexif</div><div class="line"></div><div class="line"># Modify  the exif in a file</div><div class="line">img = pexif.JpegFile.fromFile(&quot;test/data/rose.jpg&quot;)</div><div class="line">img.exif.primary.ImageDescription =  &quot;Hello world!&quot;</div><div class="line">img.writeFile(&quot;hello1.jpg&quot;)</div><div class="line"></div><div class="line"># Add exif in a file</div><div class="line">img = pexif.JpegFile.fromFile(&quot;test/data/noexif.jpg&quot;)</div><div class="line">img.exif.primary.ImageDescription = &quot;Hello world!&quot;</div><div class="line">img.exif.primary.ExtendedEXIF.UserComment = &quot;a simple comment&quot;</div><div class="line">img.writeFile(&quot;hello2.jpg&quot;)</div><div class="line"></div><div class="line"># Copy some exif field from one to another</div><div class="line">primary_src = pexif.JpegFile.fromFile(&quot;test/data/rose.jpg&quot;).exif.primary</div><div class="line">img_dst = pexif.JpegFile.fromFile(&quot;test/data/noexif.jpg&quot;)</div><div class="line">primary_dst = img_dst.exif.primary</div><div class="line">primary_dst.Model = primary_src.Model</div><div class="line">primary_dst.Make = primary_src.Make</div><div class="line">img_dst.writeFile(&quot;hello3.jpg&quot;)</div><div class="line"></div><div class="line"># Copy entire exif from one to another (where there is no exif)</div><div class="line">img_src = pexif.JpegFile.fromFile(&quot;test/data/rose.jpg&quot;)</div><div class="line">img_dst = pexif.JpegFile.fromFile(&quot;test/data/noexif.jpg&quot;)</div><div class="line">img_dst.import_exif(img_src.exif)</div><div class="line">img_dst.writeFile(&quot;hello4.jpg&quot;)</div><div class="line"></div><div class="line"># Copy entire exif from one to another (where there is exif)</div><div class="line">img_src = pexif.JpegFile.fromFile(&quot;test/data/rose.jpg&quot;)</div><div class="line">img_dst = pexif.JpegFile.fromFile(&quot;test/data/conker.jpg&quot;)</div><div class="line">img_dst.import_exif(img_src.exif)</div><div class="line">img_dst.writeFile(&quot;hello5.jpg&quot;)</div><div class="line"></div><div class="line"># Remove metadata</div><div class="line">img_dst = pexif.JpegFile.fromFile(&quot;test/data/rose.jpg&quot;)</div><div class="line">img_dst.remove_metadata(paranoid=True)</div><div class="line">img_dst.writeFile(&quot;hello6.jpg&quot;)</div><div class="line"></div><div class="line"># Import metadata</div><div class="line">img_src = pexif.JpegFile.fromFile(&quot;test/data/conker.jpg&quot;)</div><div class="line">img_dst = pexif.JpegFile.fromFile(&quot;test/data/rose.jpg&quot;)</div><div class="line">img_dst.import_metadata(img_src)</div><div class="line">img_dst.writeFile(&quot;hello7.jpg&quot;)</div></pre></td></tr></table></figure></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/09/About-JPEG-EXIF/" data-id="cj06f4b4h0000vwfwikdmu6do" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-markdown基本语法" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/03/06/markdown基本语法/" class="article-date">
-  <time datetime="2017-03-06T12:49:16.000Z" itemprop="datePublished">2017-03-06</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+          pil
         
+      </div>
+    </a>
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/06/markdown基本语法/">markdown基本语法</a>
-    </h1>
   
+    <a href="/2017/03/09/About-JPEG-EXIF/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">About JPEG EXIF</div>
+    </a>
+  
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><div id="tou">基础语法</div></p>
-<h1 id="1-标题设置"><a href="#1-标题设置" class="headerlink" title="1.标题设置"></a>1.标题设置</h1><p>使用= - 表示一级和二级。<br>使用# 1个为1级，最多6级,#后面跟一个空格，不跟就是普通符号。</p>
-<blockquote>
-<pre><code>2.块注释
-在文字开头添加&gt;表示块注释。
-</code></pre><p><em> 3.斜体 </em><br><em>在两端使用一个星号或者下划线</em><br><strong> 4.粗体 </strong><br><strong>在两端使用两个星号或者下划线</strong><br>. 无序列表<br>5.在文字开头添加(<em>, +, and -)实现无序列表。但是要注意在(</em>, +, and -)和文字之间需要添加空格。（建议：一个文档中只是用一种无序列表的表示方式）</p>
-</blockquote>
-<p>6.有序列表<br>使用数字后面跟上句号。（还要有空格）</p>
-<p>7.链接（Links）<br>Markdown中有两种方式，实现链接，分别为内联方式和引用方式。</p>
-<p>内联方式：This is an <a href="https://" target="_blank" rel="external">name</a>.<br>引用方式：<br>I get 10 times more traffic from <a href="http://google.com/" title="Google" target="_blank" rel="external">Google</a> than from <a href="http://search.yahoo.com/" title="Yahoo Search" target="_blank" rel="external">Yahoo</a> or <a href="http://search.msn.com/" title="MSN Search" target="_blank" rel="external">MSN</a>.  </p>
-<p> 8.图片（Images）<br> 图片的处理方式和链接的处理方式，非常的类似。<br> 内联方式：<img src="/path/to/img.jpg" alt="alt text" title="Title"><br> 引用方式：<br> <img src="/path/to/img.jpg" alt="alt text" title="Title"></p>
-<p> 9.代码（HTML中所谓的Code）<br> 实现方式有两种：<br> 第一种：简单文字出现一个代码框。使用<code>&lt;blockquote&gt;</code>。（<code>不是单引号而是左上角的ESC下面~中的</code>）<br> 第二种：大片文字需要实现代码框。使用Tab和四个空格。</p>
-<p> 10.脚注（footnote）<br> 实现方式如下：<br> hello<a href="hi">^hello</a></p>
-<p> 11.下划线<br> 在空白行下方添加三条“-”横线。（前面讲过在文字下方添加“-”，实现的2级标题）<br>12.页内跳转</p>
-<p><div id="Mark"></div>这句话定义了锚点所指定的位置标记，名字为“Mark”.<br>[这句话是想要跳转到Mark处的锚点链接，点击即会跳转]  (#Mark).<br>13.页间跳转<br>[现在点击此链接，可实现页间跳转]  (<a href="http://blog.csdn.net/thither_shore/article/details/52185758/#Inter-Page" target="_blank" rel="external">http://blog.csdn.net/thither_shore/article/details/52185758/#Inter-Page</a>)<br><a href="#tou">返回头部</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/06/markdown基本语法/" data-id="cj06f4b4r0004vwfwtdgzafs3" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
   
 </article>
-
-
-  
-    <article id="post-一些有趣的网站" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/03/06/一些有趣的网站/" class="article-date">
-  <time datetime="2017-03-06T12:44:36.000Z" itemprop="datePublished">2017-03-06</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/06/一些有趣的网站/">一些有趣的网站</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>此文长期更新，作各种网站收录用。<br>网站收集主要来源<a href="https://zhihu.com" target="_blank" rel="external">知乎</a>,<a href="http://youquhome.com/" target="_blank" rel="external">有趣网站之家</a>,以及本人收集的。</p>
-<h3 id="文明上网，慎爬梯子。"><a href="#文明上网，慎爬梯子。" class="headerlink" title="文明上网，慎爬梯子。"></a>文明上网，慎爬梯子。</h3><h2 id="类别"><a href="#类别" class="headerlink" title="类别"></a>类别</h2><p><a href="#kexue">科学类</a>    <a href="#jisuanji">计算机类</a>    <a href="#tuxing">图形类</a><br><a href="#anquan">安全类</a>   <a href="#sousuo">搜索引擎</a>      <a href="#chaxun">查询类</a><br><a href="#lingting">聆听类</a> <a href="#nannv">宅男腐女</a>       <a href="#heian">黑暗类</a><br><a href="#quwei">趣味类</a></p>
-<h2 id="科学类"><a href="#科学类" class="headerlink" title="科学类"></a><div id="kexue">科学类</div></h2><p><a href="http://www.wolframalpha.com/" target="_blank" rel="external">wolfram</a><br><a href="https://justgetflux.com/" target="_blank" rel="external">f.lux调整显示器色温</a><br><a href="https://sciencevsmagic.net/" target="_blank" rel="external">几何绘图小游戏</a><br><a href="https://paintschainer.preferred.tech/" target="_blank" rel="external">素描在线上色</a><br><a href="http://www.gifntext.com/" target="_blank" rel="external">GIF图片在线添加字幕</a><br><a href="http://www.logoko.com.cn/" target="_blank" rel="external">在线制作简易LOGO</a><br><a href="http://misha.studio/snowflaker/" target="_blank" rel="external">矢量雪花生成</a><br><a href="http://adornpic.com/" target="_blank" rel="external">在线合成可爱搞笑图</a></p>
-<h2 id="计算机类"><a href="#计算机类" class="headerlink" title="计算机类"></a><div id="jisuanji">计算机类</div></h2><p><a href="https://www.github.com" target="_blank" rel="external">Github</a><br><a href="blog.csdn.net">CSDN</a><br><a href="www.stackoverflow.com">Stack Overflow</a></p>
-<h2 id="图形类"><a href="#图形类" class="headerlink" title="图形类"></a><div id="tuxing">图形类</div></h2><p><a href="http://weavesilk.com/" target="_blank" rel="external">对称酷炫图形</a></p>
-<h2 id="安全类"><a href="#安全类" class="headerlink" title="安全类"></a><div id="anquan">安全类</div></h2><p><a href="http://www.shuidi.im/" target="_blank" rel="external">图片盲水印</a><br><a href="www.freebuf.com">FREEBUF</a><br><a href="http://navisec.it" target="_blank" rel="external">纳威安全导航</a><br><a href="www.mottoin.com">MottoIN安全媒体</a><br><a href="https://vulreport.net" target="_blank" rel="external">梯子，台湾漏洞平台</a><br><a href="https://hackerone.com" target="_blank" rel="external">梯子，漏洞平台</a><br><a href="https://bugcrowd.com" target="_blank" rel="external">梯子，漏洞平台</a><br><a href="https://www.zerodayinitative.com" target="_blank" rel="external">梯子，只接受二进制高危漏洞</a><br><a href="www.xssed.com">XSSED</a></p>
-<h2 id="搜索引擎"><a href="#搜索引擎" class="headerlink" title="搜索引擎"></a><div id="sousuo">搜索引擎</div></h2><p><a href="https://www.google.com" target="_blank" rel="external">谷歌</a><br><a href="https://www.baidu.com" target="_blank" rel="external">百度</a><br><a href="www.duckduckgo.com">Duck</a></p>
-<h2 id="查询类"><a href="#查询类" class="headerlink" title="查询类"></a><div id="chaxun">查询类</div></h2><p><a href="https://ip.rtbasia.com/" target="_blank" rel="external">ip自查</a><br><a href="https://www.whatsmydns.net/" target="_blank" rel="external">全球多节点域名解析</a><br><a href="www.tianyancha.com">企业信息查询天眼查</a><br><a href="iknowwhatyoudownload.com">下载历史查询</a></p>
-<h2 id="聆听类"><a href="#聆听类" class="headerlink" title="聆听类"></a><div id="lingting">聆听类</div></h2><p><a href="https://www.sleepcycle.com" target="_blank" rel="external">梯子，辅助睡眠</a></p>
-<h2 id="黑暗类（base64）"><a href="#黑暗类（base64）" class="headerlink" title="黑暗类（base64）"></a><div id="heian">黑暗类（base64）</div></h2><p>‘\xc3\x0c-\xa2\xbak\xa27\x9c\xb6\x8a\xe0’<br>会上面那个，你也懂了吧。</p>
-<h2 id="趣味类"><a href="#趣味类" class="headerlink" title="趣味类"></a><div id="quwei">趣味类</div></h2><p><a href="https://cybermap.kaspersky.com/" target="_blank" rel="external">梯子，卡巴斯基展示全球病毒</a><br><a href="http://www.breathingearth.net/" target="_blank" rel="external">地球的呼吸</a><br><a href="http://www.beautifulchemistry.net/home-cn" target="_blank" rel="external">美丽的化学</a><br><a href="http://www.vill.ee/eye/" target="_blank" rel="external">梯子，人眼模拟</a><br><a href="https://strobe.cool/" target="_blank" rel="external">模拟幻觉</a><br><a href="http://findingho.me/" target="_blank" rel="external">体验飞行</a><br><a href="http://tour.ubuntu.com/zh-CN/#" target="_blank" rel="external">ubuntu在线体验</a><br><a href="http://htwins.net/scale2/lang.html" target="_blank" rel="external">宇宙的刻度</a><br><a href="http://www.chromoscope.net/" target="_blank" rel="external">不同光谱下的宇宙</a><br><a href="http://hubblesite.org/explore_astronomy/black_holes/encyc_mod3_q16.html" target="_blank" rel="external">体验坠入黑洞</a><br><a href="http://emojisandearthporn.com/300-animals.html" target="_blank" rel="external">找到不动的emoji</a><br><a href="http://www.staggeringbeauty.com/" target="_blank" rel="external">不要点鳗鱼</a><br><a href="https://helioviewer.org/" target="_blank" rel="external">太阳高清图像</a><br><a href="http://nazo.one-story.cn/" target="_blank" rel="external">网址迷宫</a><br><a href="https://orgasmsoundlibrary.com/" target="_blank" rel="external">羞羞声，未满18慎入</a><br><a href="http://www.keyboard-layout-editor.com/" target="_blank" rel="external">在线制作键盘图纸</a></p>
-<h2 id="宅男腐女"><a href="#宅男腐女" class="headerlink" title="宅男腐女"></a><div id="nannv">宅男腐女</div></h2><p><a href="www.t66y.com">草榴</a><br><a href="www.720lu.com">91</a><br><a href="www.4chan.com">直播</a><br><a href="www.4chan.org">4chan</a><br>…腐站那么多- -，自己找。</p>
-<h2 id=""><a href="#" class="headerlink" title=""></a><div id=""></div></h2><h2 id="-1"><a href="#-1" class="headerlink" title=""></a><div id=""></div></h2><h2 id="-2"><a href="#-2" class="headerlink" title=""></a><div id=""></div></h2><h2 id="-3"><a href="#-3" class="headerlink" title=""></a><div id=""></div></h2><h2 id="-4"><a href="#-4" class="headerlink" title=""></a><div id=""></div></h2><h2 id="-5"><a href="#-5" class="headerlink" title=""></a><div id=""></div></h2>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/06/一些有趣的网站/" data-id="cj06f4b4v0006vwfwc96u4xkb" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/03/06/hello-world/" class="article-date">
-  <time datetime="2017-03-06T10:17:12.469Z" itemprop="datePublished">2017-03-06</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/06/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/06/hello-world/" data-id="cj06f4b4o0002vwfw1wt9ivzw" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hexo搭建记录" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/03/06/hexo搭建记录/" class="article-date">
-  <time datetime="2017-03-06T09:23:02.000Z" itemprop="datePublished">2017-03-06</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/06/hexo搭建记录/">hexo搭建记录</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><h2 id="linux-4-6-0-kali1-686-pae"><a href="#linux-4-6-0-kali1-686-pae" class="headerlink" title="linux: 4.6.0-kali1-686-pae |"></a>linux: 4.6.0-kali1-686-pae |</h2><h2 id="node-node-v7-7-1"><a href="#node-node-v7-7-1" class="headerlink" title="node : node-v7.7.1 |"></a>node : node-v7.7.1 |</h2><h2 id="hexo-3-2-2"><a href="#hexo-3-2-2" class="headerlink" title="hexo : 3.2.2 |"></a>hexo : 3.2.2 |</h2><h2 id="git-2-9-3"><a href="#git-2-9-3" class="headerlink" title="git  : 2.9.3 |"></a>git  : 2.9.3 |</h2><h1 id="git部分"><a href="#git部分" class="headerlink" title="git部分"></a>git部分</h1><p>创建<a href="https://www.github.com" target="_blank" rel="external">github</a>帐号,创建新库，库名为name.github.io，名字用自己的。并配置本地公钥。<br>详细git使用可参考<a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="external">廖雪峰Git教程</a></p>
-<h1 id="hexo部分"><a href="#hexo部分" class="headerlink" title="hexo部分"></a>hexo部分</h1><p>从<a href="https://nodejs.org/en/" target="_blank" rel="external">node官网</a>下载文件,得到 node-v7.7.1-linux-x86.tar.xz<br><code>xz -d name</code> 解压xz<br><code>tar -xvf name</code> 解压tar<br><code>cd ~/下载/node-v7.7.1-linux-x86/bin</code> 切换到刚刚解压的文件,绝对路径按当前环境改变。<br><code>ln -s  ~/下载/node-v7.7.1-linux-x86/bin/node  /usr/local/bin/node</code> 设置全局域名。<br><code>ln -s  ~/下载/node-v7.7.1-linux-x86/bin/npm   /usr/local/bin/npm</code>  设置全局域名。<br><code>npm install -g hexo</code> 安装hexo。<br><code>mkdir blog;cd blog</code>  创建新目录blog，并切换到blog目录下。<br><code>hexo init</code> 如果无hexo命令，回到设置全局域名的地方，应该有个hexo，将hexo添加到全局域名。<br><code>hexo generate</code> 生成静态网页<br><code>hexo server</code>   运行服务<br>浏览器输入 <a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a> 环境ok的话可以直接看到了，我没遇到问题。<br><code>vim _config.yml</code>  #最下面改为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">type: git</div><div class="line">repository: https://github.com/ranyand/ranyand.github.io.git</div><div class="line">branch: master</div></pre></td></tr></table></figure></p>
-<h2 id="注意，上面冒号后面有一个空格。"><a href="#注意，上面冒号后面有一个空格。" class="headerlink" title="注意，上面冒号后面有一个空格。"></a>注意，上面冒号后面有一个空格。</h2><p><code>npm install hexo-deployer-git --save</code> 这里应该是执行hexo和git的关联部署。<br><code>hexo deploy</code> 开始部署，需要github账户密码。</p>
-<h2 id="当当当当，完成了。输入地址https-ranyand-github-io-。博客出炉了。"><a href="#当当当当，完成了。输入地址https-ranyand-github-io-。博客出炉了。" class="headerlink" title="当当当当，完成了。输入地址https://ranyand.github.io/  。博客出炉了。"></a>当当当当，完成了。输入地址<a href="https://ranyand.github.io/" target="_blank" rel="external">https://ranyand.github.io/</a>  。博客出炉了。</h2><h1 id="日常更新"><a href="#日常更新" class="headerlink" title="日常更新"></a>日常更新</h1><p><code>hexo clean</code> 清楚缓存，网页正常可忽略<br><code>hexo g</code>  生成静态网页<br><code>hexo d</code>  开始部署</p>
-<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><pre><code>hexo new &quot;postName&quot; #新建文章
-hexo new page &quot;pageName&quot; #新建页面
-hexo generate #生成静态页面至public目录
-hexo server #开启预览访问端口（默认端口4000，&apos;ctrl + c&apos;关闭server）
-hexo deploy #将.deploy目录部署到GitHub
-hexo help  #查看帮助
-hexo version  #查看Hexo的版本
-</code></pre><h4 id="杂记"><a href="#杂记" class="headerlink" title="杂记"></a>杂记</h4><p>MAC环境下 首先要安装xcode。不然后面容易如各种错误- -我就没装，后面老出现各种错误，也有可能是其他原因吧。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/06/hexo搭建记录/" data-id="cj06f4b4q0003vwfwvd0pntnp" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 </section>
         
