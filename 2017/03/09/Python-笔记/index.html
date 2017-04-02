@@ -3,20 +3,20 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Python PIL库翻译 | 刘木</title>
+  <title>Python笔记之 PIL库翻译 | 刘木</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="来源PIL官方文档环境Linux,Python2.7。注：灰色代码框内为部分单词释义。1.旋转并显示图片loads(加载),rotate(旋转),display(显示),external(外部)
+  <meta name="description" content="来源PIL官方文档环境Linux,Python2.7。注：开头灰色代码框内为部分单词释义。旋转并显示图片loads(加载),rotate(旋转),display(显示),external(外部)
 The following script loads an image, rotates it 45 degrees, and displays it using an external viewer (">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Python PIL库翻译">
+<meta property="og:title" content="Python笔记之 PIL库翻译">
 <meta property="og:url" content="http://yoursite.com/2017/03/09/Python-笔记/index.html">
 <meta property="og:site_name" content="刘木">
-<meta property="og:description" content="来源PIL官方文档环境Linux,Python2.7。注：灰色代码框内为部分单词释义。1.旋转并显示图片loads(加载),rotate(旋转),display(显示),external(外部)
+<meta property="og:description" content="来源PIL官方文档环境Linux,Python2.7。注：开头灰色代码框内为部分单词释义。旋转并显示图片loads(加载),rotate(旋转),display(显示),external(外部)
 The following script loads an image, rotates it 45 degrees, and displays it using an external viewer (">
-<meta property="og:updated_time" content="2017-03-09T12:19:15.722Z">
+<meta property="og:updated_time" content="2017-03-22T13:04:12.087Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python PIL库翻译">
-<meta name="twitter:description" content="来源PIL官方文档环境Linux,Python2.7。注：灰色代码框内为部分单词释义。1.旋转并显示图片loads(加载),rotate(旋转),display(显示),external(外部)
+<meta name="twitter:title" content="Python笔记之 PIL库翻译">
+<meta name="twitter:description" content="来源PIL官方文档环境Linux,Python2.7。注：开头灰色代码框内为部分单词释义。旋转并显示图片loads(加载),rotate(旋转),display(显示),external(外部)
 The following script loads an image, rotates it 45 degrees, and displays it using an external viewer (">
   
     <link rel="alternate" href="/atom.xml" title="刘木" type="application/atom+xml">
@@ -80,7 +80,7 @@ The following script loads an image, rotates it 45 degrees, and displays it usin
         
   
     <h1 class="article-title" itemprop="name">
-      Python PIL库翻译
+      Python笔记之 PIL库翻译
     </h1>
   
 
@@ -88,12 +88,12 @@ The following script loads an image, rotates it 45 degrees, and displays it usin
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="来源PIL官方文档"><a href="#来源PIL官方文档" class="headerlink" title="来源PIL官方文档"></a>来源<a href="http://effbot.org/imagingbook/image.htm" target="_blank" rel="external">PIL官方文档</a></h1><h1 id="环境Linux-Python2-7。"><a href="#环境Linux-Python2-7。" class="headerlink" title="环境Linux,Python2.7。"></a>环境Linux,Python2.7。</h1><h1 id="注：灰色代码框内为部分单词释义。"><a href="#注：灰色代码框内为部分单词释义。" class="headerlink" title="注：灰色代码框内为部分单词释义。"></a>注：灰色代码框内为部分单词释义。</h1><h2 id="1-旋转并显示图片"><a href="#1-旋转并显示图片" class="headerlink" title="1.旋转并显示图片"></a>1.旋转并显示图片</h2><p><code>loads(加载),rotate(旋转),display(显示),external(外部)</code></p>
+        <h1 id="来源PIL官方文档"><a href="#来源PIL官方文档" class="headerlink" title="来源PIL官方文档"></a>来源<a href="http://effbot.org/imagingbook/image.htm" target="_blank" rel="external">PIL官方文档</a></h1><h1 id="环境Linux-Python2-7。"><a href="#环境Linux-Python2-7。" class="headerlink" title="环境Linux,Python2.7。"></a>环境Linux,Python2.7。</h1><h1 id="注：开头灰色代码框内为部分单词释义。"><a href="#注：开头灰色代码框内为部分单词释义。" class="headerlink" title="注：开头灰色代码框内为部分单词释义。"></a>注：开头灰色代码框内为部分单词释义。</h1><h2 id="旋转并显示图片"><a href="#旋转并显示图片" class="headerlink" title="旋转并显示图片"></a>旋转并显示图片</h2><p><code>loads(加载),rotate(旋转),display(显示),external(外部)</code></p>
 <p>The following script loads an image, rotates it 45 degrees, and displays it using an external viewer (usually xv on Unix, and the paint program on Windows).<br>以下脚本将加载一个图像，并将该图像旋转45度，并且用外部查看器显示他。（通常是Unix上的xv,和Windows上的绘图程序。）</p>
 <h3 id="Open-rotate-and-display-an-image-using-the-default-viewer"><a href="#Open-rotate-and-display-an-image-using-the-default-viewer" class="headerlink" title="Open,rotate,and display an image(using the default viewer)"></a>Open,rotate,and display an image(using the default viewer)</h3><h3 id="打开，旋转，并显示图片（使用默认查看器）"><a href="#打开，旋转，并显示图片（使用默认查看器）" class="headerlink" title="打开，旋转，并显示图片（使用默认查看器）"></a>打开，旋转，并显示图片（使用默认查看器）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">from PIL import Image</div><div class="line">im = Image.open(&quot;bride.jpg&quot;)</div><div class="line">im.rotate(45).show()</div></pre></td></tr></table></figure>
-<h2 id="2-创建缩略图"><a href="#2-创建缩略图" class="headerlink" title="2.创建缩略图"></a>2.创建缩略图</h2><p><code>thumbnails(缩略图)，current(当前)，directory(目录)，antialias(抗锯齿)</code></p>
+<h2 id="创建缩略图"><a href="#创建缩略图" class="headerlink" title="创建缩略图"></a>创建缩略图</h2><p><code>thumbnails(缩略图)，current(当前)，directory(目录)，antialias(抗锯齿)</code></p>
 <p>The following script creates nice 128x128 thumbnails of all JPEG images in the current directory.<br>以下脚本将为当前目录下所有的JPEG图像创建一个精致的 128*128缩略图。</p>
-<h3 id="Create-thumbnails"><a href="#Create-thumbnails" class="headerlink" title="Create thumbnails"></a>Create thumbnails</h3><h3 id="创建缩略图"><a href="#创建缩略图" class="headerlink" title="创建缩略图"></a>创建缩略图</h3><p>```<br>from PIL import Image<br>import glob, os</p>
+<h3 id="Create-thumbnails"><a href="#Create-thumbnails" class="headerlink" title="Create thumbnails"></a>Create thumbnails</h3><h3 id="创建缩略图-1"><a href="#创建缩略图-1" class="headerlink" title="创建缩略图"></a>创建缩略图</h3><p>```<br>from PIL import Image<br>import glob, os</p>
 <p>#图片尺寸有高宽<br>size = 128, 128</p>
 <p>#仅能找到后缀为.jpg，若为.jpeg .JPG .JPEG则无效。要自己改后缀名。<br>for infile in glob.glob(“*.jpg”):</p>
 <p>#分裂文件名，例源文件是hello.jpg,执行后就变成file=hello,ext=.jpg<br>    file, ext = os.path.splitext(infile)<br>    im = Image.open(infile)<br>    im.thumbnail(size, Image.ANTIALIAS)</p>
@@ -104,18 +104,14 @@ details(细节),initialised(初始化),filled(填充)</code><br>Image.new(mode, 
 <p>Creates a new image with the given mode and size. Size is given as a (width, height)-tuple, in pixels. The color is given as a single value for single-band images, and a tuple for multi-band images (with one value for each band). In 1.1.4 and later, you can also use color names (see the ImageColor module documentation for details) If the color argument is omitted, the image is filled with zero (this usually corresponds to black). If the color is None, the image is not initialised. This can be useful if you’re going to paste or draw things in the image.<br>用所给的模式和尺寸创建一个新图像。size以（width， height）元组形式给出，单位是像素。该颜色作为单频带图像的单个值给出，并且对于多频带图像（每个频带具有一个值）给出一个元组。在1.1.4和更高版本中，你也可以使用颜色名称（详细请请参阅ImageColor 模块文档）。若颜色省略，则图像将填充零（通常是黑色）。如果颜色为无，则不初始化图像。如果你想在图像中粘贴或绘制内容，这将对你很有用。<br>from PIL import Image<br>im  = Image.new(“RGB”, (512, 512), “white”) #单频带，由单个值给出。<br>im2 = Image.new(“RGB”, (512, 512), (255,255,255)) #多频带，以元组形式用多个值给出，(xxx,xxx,xxx)</p>
 <h3 id="open"><a href="#open" class="headerlink" title="open"></a><div id="open">open<open></open></div></h3><p><code>identifies(辨认),operation(操作),actual(实际),data(数据)，binary(二进制),methods(方法),representing(表示),implement(实现),seek(查找)</code><br>Image.open(file)<br>Image.open(file, mode)</p>
 <p>Opens and identifies the given image file. This is a lazy operation; the function reads the file header, but the actual image data is not read from the file until you try to process the data (call the load method to force loading). If the mode argument is given, it must be “r”.<br>打开并辨认所给的图像文件。这是一个懒操作，这个函数读取文件头部，但实际上图像数据并不是从文件中读取，直到你尝试处理数据（调用load方法来暴力加载）。如果给出了mode参数，它肯定是“r”。</p>
-<p>You can use either a string (representing the filename) or a file object as the file argument. In the latter case, the file object must implement read, seek, and tell methods, and be opened in binary mode.<br>你可以使用另一个字符串（表示文件名）或文件对象作为文件参数。在后一种情况下，文件对象必须实现read，seek和tell方法，并以二进制模式打开。<br>from PIL import Image<br>im = Image.open(“lenna.jpg”)</p>
-<p>from PIL import image<br>from StringIO import StringIO</p>
-<h1 id="read-data-from-string"><a href="#read-data-from-string" class="headerlink" title="read data from string"></a>read data from string</h1><p>im = Image.open(StringIO(data))</p>
-<p>blend #</p>
-<p>Image.blend(image1, image2, alpha) ⇒ image</p>
-<p>Creates a new image by interpolating between the given images, using a constant alpha. Both images must have the same size and mode.</p>
-<pre><code>out = image1 * (1.0 - alpha) + image2 * alpha
-
-If the alpha is 0.0, a copy of the first image is returned. If the alpha is 1.0, a copy of the second image is returned. There are no restrictions on the alpha value. If necessary, the result is clipped to fit into the allowed output range.
-composite #
-
-Image.composite(image1, image2, mask) ⇒ image
+<p>You can use either a string (representing the filename) or a file object as the file argument. In the latter case, the file object must implement read, seek, and tell methods, and be opened in binary mode.<br>你可以使用另一个字符串（表示文件名）或文件对象作为文件参数。在后一种情况下，文件对象必须实现read，seek和tell方法，并以二进制模式打开。<br><code>from PIL import Image</code><br><code>im = Image.open(&quot;lenna.jpg&quot;)</code></p>
+<p><code>from PIL import image</code><br><code>from StringIO import StringIO</code></p>
+<h4 id="read-data-from-string"><a href="#read-data-from-string" class="headerlink" title="#read data from string"></a>#read data from string</h4><h4 id="读取字符串中的数据"><a href="#读取字符串中的数据" class="headerlink" title="# 读取字符串中的数据"></a># 读取字符串中的数据</h4><p><code>im = Image.open(StringIO(data))</code></p>
+<h2 id="blend"><a href="#blend" class="headerlink" title="blend"></a>blend</h2><h2 id="混合"><a href="#混合" class="headerlink" title="混合"></a>混合</h2><p><code>interpolating(插值)，constant(常量)，restrictions(限制),clipped(剪切),allow(允许),output(输出)</code><br>Image.blend(image1, image2, alpha) ⇒ image<br>混合图像（图像1,图像2,常量α）导成图像</p>
+<p>Creates a new image by interpolating between the given images, using a constant alpha. Both images must have the same size and mode.<br>通过使用常量α在给定图像之间的插值来创建新一个新图像。两个图像大小和模式必须相同。</p>
+<p><code>out = image1 * (1.0 - alpha) + image2 * alpha</code></p>
+<p>If the alpha is 0.0, a copy of the first image is returned. If the alpha is 1.0, a copy of the second image is returned. There are no restrictions on the alpha value. If necessary, the result is clipped to fit into the allowed output range.<br>如果α为0.0,则返回第一张图像的副本，如果α为1.0,则返回第二张图像的副本。α的值并没有限制。如果需要，结果会被剪切来匹配(适应)允许的输出范围。</p>
+<h2 id="composite"><a href="#composite" class="headerlink" title="composite"></a>composite</h2><h2 id="合成"><a href="#合成" class="headerlink" title="合成"></a>合成</h2><pre><code>Image.composite(image1, image2, mask) ⇒ image
 
 Creates a new image by interpolating between the given images, using the corresponding pixels from a mask image as alpha. The mask can have mode “1”, “L”, or “RGBA”. All images must be the same size.
 eval #
@@ -591,7 +587,7 @@ When converting from a colour image to black and white, the library uses the ITU
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/09/Python-笔记/" data-id="cj0att7f40002gkfwsrq596b1" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2017/03/09/Python-笔记/" data-id="cj0ky67l0000184fw9rxq6820" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -600,11 +596,11 @@ When converting from a colour image to black and white, the library uses the ITU
     
 <nav id="article-nav">
   
-    <a href="/2017/03/12/pil/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/03/15/wifi/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Récent</strong>
       <div class="article-nav-title">
         
-          pil
+          WIFI
         
       </div>
     </a>
@@ -653,11 +649,7 @@ When converting from a colour image to black and white, the library uses the ITU
           </li>
         
           <li>
-            <a href="/2017/03/12/pil/">pil</a>
-          </li>
-        
-          <li>
-            <a href="/2017/03/09/Python-笔记/">Python PIL库翻译</a>
+            <a href="/2017/03/09/Python-笔记/">Python笔记之 PIL库翻译</a>
           </li>
         
           <li>
@@ -666,6 +658,10 @@ When converting from a colour image to black and white, the library uses the ITU
         
           <li>
             <a href="/2017/03/06/markdown基本语法/">markdown基本语法</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/06/一些有趣的网站/">一些有趣的网站</a>
           </li>
         
       </ul>

